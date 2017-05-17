@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 	//variables del formulario info_academica.php
 	/*
 	ya se puede realizar la insecion de los datos, como la modificacion de los mismo, tener encuenta en la cadena de conexion que este correcta con la de la base de datos en mi caso es "localhost/orcl" la de la profe es "localhost/XE". tambien ter en cuenta que solo se puede ingresar informacion de personas que esten registradas en la tabla estudiantes.
@@ -165,4 +166,45 @@ echo "<br> <br>";
 		Insert into TIPO_DOCUMENTO (TD_CODE,TD_DESCRIPCION) values ('CA','CERTIFICADO DE CABILDO');
 		commit;
 */
+=======
+	echo $_POST['Nomb_sede'];
+	echo "<br>"; 
+	echo $_POST['Tipo_documento'];
+	echo "<br>"; 
+	echo $_POST['Editbox1'];
+	echo "<br>"; 
+	echo $_POST['Editbox2'];
+	echo "<br>"; 
+	echo $_POST['Primer_nombre'];
+	echo "<br>"; 
+	echo $_POST['Segundo_nombre'];
+	echo "<br>"; 
+	echo $_POST['Primer_apellido'];
+	echo "<br>"; 
+	echo $_POST['Segundo_apellido'];
+	echo "<br>"; 
+	echo $_POST["Nombre_colegio"];
+	echo "<br>"; 
+	echo $_POST["Jornada_Estudio"];
+	echo "<br>"; 
+	echo $_POST["Calendari_estudio"];
+	echo "<br>"; 
+	echo $_POST["tipo_colegio"];
+	echo "<br>"; 
+	echo $_POST["especialidad"];
+	echo "<br>"; 
+	echo $_POST["metodologia"];
+	echo "<br>"; 
+	echo $_POST["idioma"];
+	echo "<br>"; 
+	echo $_POST["Valor_pension"];
+	echo "<br>"; 
+	echo $_POST["bachillerato_valido"];
+	echo "<br>"; 
+	echo $_POST["Codigo_snp"];
+	echo "<br>"; 
+	echo $_POST["presentacion_examen"];
+	echo "<br>"; 
+	echo $_POST["puntaje_saber_11"];
+>>>>>>> 2e6663bd37ca85762ed57d58b6d84d6c512a1876
 ?>
