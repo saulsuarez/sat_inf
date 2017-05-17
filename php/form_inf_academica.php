@@ -132,79 +132,31 @@ echo "<br> <br>";
 				oci_execute($stid);
 		break;
 	}
-/*
 
+	/*creacion incremento en oracle
+			CREATE SEQUENCE id_bachillerato
+			INCREMENT BY 1
+			START WITH 0
+			MAXVALUE 9999 MINVALUE 0 CYCLE ORDER;
+	*/
 
-//validacion e ingreso de datos		
+	/*creacion tabla tipo documentos 
+			CREATE TABLE TIPO_DOCUMENTO
+			(
+			TD_CODE        VARCHAR2 (2) NOT NULL ,
+			TD_DESCRIPCION VARCHAR2 (50)
+			) ;
+			ALTER TABLE TIPO_DOCUMENTO ADD CONSTRAINT TIPO_DOCUMENTO_PK PRIMARY KEY ( TD_CODE ) ;
 
-//carga de datos
+			ALTER TABLE PERSONA ADD CONSTRAINT PERSONA_TIPO_DOCUMENTO_FK FOREIGN KEY ( TIPO_DOC ) REFERENCES TIPO_DOCUMENTO ( TD_CODE ) ;
 
-/*
+			Insert into TIPO_DOCUMENTO (TD_CODE,TD_DESCRIPCION) values ('CC','CEDULA DE CIUDADANIA');
+			Insert into TIPO_DOCUMENTO (TD_CODE,TD_DESCRIPCION) values ('DE','DOCUMENTO DE IDENTIDAD EXTRANJERA');
+			Insert into TIPO_DOCUMENTO (TD_CODE,TD_DESCRIPCION) values ('CE','CEDULA DE EXTRANJERIA');
+			Insert into TIPO_DOCUMENTO (TD_CODE,TD_DESCRIPCION) values ('TI','TARJETA DE IDENTIDAD');
+			Insert into TIPO_DOCUMENTO (TD_CODE,TD_DESCRIPCION) values ('PS','PASAPORTE');
+			Insert into TIPO_DOCUMENTO (TD_CODE,TD_DESCRIPCION) values ('CA','CERTIFICADO DE CABILDO');
+			commit;
+	*/
 
-*/
-/*creacion incremento en oracle
-		CREATE SEQUENCE id_bachillerato
-		INCREMENT BY 1
-		START WITH 0
-		MAXVALUE 9999 MINVALUE 0 CYCLE ORDER;
-*/
-/*creacion tabla tipo documentos 
-		CREATE TABLE TIPO_DOCUMENTO
-		(
-		TD_CODE        VARCHAR2 (2) NOT NULL ,
-		TD_DESCRIPCION VARCHAR2 (50)
-		) ;
-		ALTER TABLE TIPO_DOCUMENTO ADD CONSTRAINT TIPO_DOCUMENTO_PK PRIMARY KEY ( TD_CODE ) ;
-
-		ALTER TABLE PERSONA ADD CONSTRAINT PERSONA_TIPO_DOCUMENTO_FK FOREIGN KEY ( TIPO_DOC ) REFERENCES TIPO_DOCUMENTO ( TD_CODE ) ;
-
-		Insert into TIPO_DOCUMENTO (TD_CODE,TD_DESCRIPCION) values ('CC','CEDULA DE CIUDADANIA');
-		Insert into TIPO_DOCUMENTO (TD_CODE,TD_DESCRIPCION) values ('DE','DOCUMENTO DE IDENTIDAD EXTRANJERA');
-		Insert into TIPO_DOCUMENTO (TD_CODE,TD_DESCRIPCION) values ('CE','CEDULA DE EXTRANJERIA');
-		Insert into TIPO_DOCUMENTO (TD_CODE,TD_DESCRIPCION) values ('TI','TARJETA DE IDENTIDAD');
-		Insert into TIPO_DOCUMENTO (TD_CODE,TD_DESCRIPCION) values ('PS','PASAPORTE');
-		Insert into TIPO_DOCUMENTO (TD_CODE,TD_DESCRIPCION) values ('CA','CERTIFICADO DE CABILDO');
-		commit;
-*/
-=======
-	echo $_POST['Nomb_sede'];
-	echo "<br>"; 
-	echo $_POST['Tipo_documento'];
-	echo "<br>"; 
-	echo $_POST['Editbox1'];
-	echo "<br>"; 
-	echo $_POST['Editbox2'];
-	echo "<br>"; 
-	echo $_POST['Primer_nombre'];
-	echo "<br>"; 
-	echo $_POST['Segundo_nombre'];
-	echo "<br>"; 
-	echo $_POST['Primer_apellido'];
-	echo "<br>"; 
-	echo $_POST['Segundo_apellido'];
-	echo "<br>"; 
-	echo $_POST["Nombre_colegio"];
-	echo "<br>"; 
-	echo $_POST["Jornada_Estudio"];
-	echo "<br>"; 
-	echo $_POST["Calendari_estudio"];
-	echo "<br>"; 
-	echo $_POST["tipo_colegio"];
-	echo "<br>"; 
-	echo $_POST["especialidad"];
-	echo "<br>"; 
-	echo $_POST["metodologia"];
-	echo "<br>"; 
-	echo $_POST["idioma"];
-	echo "<br>"; 
-	echo $_POST["Valor_pension"];
-	echo "<br>"; 
-	echo $_POST["bachillerato_valido"];
-	echo "<br>"; 
-	echo $_POST["Codigo_snp"];
-	echo "<br>"; 
-	echo $_POST["presentacion_examen"];
-	echo "<br>"; 
-	echo $_POST["puntaje_saber_11"];
->>>>>>> 2e6663bd37ca85762ed57d58b6d84d6c512a1876
 ?>
