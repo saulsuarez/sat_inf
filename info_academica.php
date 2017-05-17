@@ -37,7 +37,7 @@
 					<hr id="Line11">
 				</div>
 			</form>
-		</div>
+
 		<?php
 			$conn = oci_connect('satuser','satuser','localhost/orcl');
 			if (!$conn)

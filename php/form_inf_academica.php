@@ -1,5 +1,8 @@
 <?php
 	//variables del formulario info_academica.php
+	/*
+	ya se puede realizar la insecion de los datos, como la modificacion de los mismo, tener encuenta en la cadena de conexion que este correcta con la de la base de datos en mi caso es "localhost/orcl" la de la profe es "localhost/XE". tambien ter en cuenta que solo se puede ingresar informacion de personas que esten registradas en la tabla estudiantes.
+	 */
 echo "<H1>DATOS RECOLECTADOS </H1>";
 	$nombre_sede         = $_POST['Nomb_sede'];
 	$tipo_documento      = $_POST['tipo_documento'];
@@ -116,33 +119,27 @@ echo "<br> <br>";
 	switch($_POST['botton_accion']) 
 	{
 		case "registrar":
-			$insercion = "'"."INSERT INTO INFO_BACHILLERATO (INFO_BACHILLERATO_ID,ESTUDIANTE_COD_SEDE,ESTUDIANTE_TIPO_DOC,ESTUDIANTE_NUM_DOCUMENTO,COLEGIO_CODE,JORNADA_ID,CALENDARIO_ID,TIPO_COLEGIO,ESPECIALIDAD_COL_CODE,MEBAC_ID,IDIOMA_BACH_ID,VALOR_PENSION,VALIDO_BACH,CODIGO_SABER11,FECHA_SABER11,PUNTAJE_TOTAL_SABER11,TIEMPO_INGRESO_ID) VALUES (id_bachillerato.NextVal,'".$codigo_sede."','".$codigo_td."','".$n_doc_iden."','".$codigo_colegio."','".$jornada_id."','".$calendario_id."','".$tipo_colegio."','".$codigo_especialidad."','".$metodologia_id."','".$idioma_id."','".$valor_pension."','".$bachillerato_valido."','".$codigo_snp."',to_date('".$presentacion_examen."','RRRR/MM/DD'),'".$puntaje_saber_11."','".$tiempo_ingreso_id."')"."'";
-			echo "<h1>consulta</h1>".$insercion;
+			$insercion = "INSERT INTO INFO_BACHILLERATO (INFO_BACHILLERATO_ID,ESTUDIANTE_COD_SEDE,ESTUDIANTE_TIPO_DOC,ESTUDIANTE_NUM_DOCUMENTO,COLEGIO_CODE,JORNADA_ID,CALENDARIO_ID,TIPO_COLEGIO,ESPECIALIDAD_COL_CODE,MEBAC_ID,IDIOMA_BACH_ID,VALOR_PENSION,VALIDO_BACH,CODIGO_SABER11,FECHA_SABER11,PUNTAJE_TOTAL_SABER11,TIEMPO_INGRESO_ID) VALUES (id_bachillerato.NextVal,'".$codigo_sede."','".$codigo_td."','".$n_doc_iden."','".$codigo_colegio."','".$jornada_id."','".$calendario_id."','".$tipo_colegio."','".$codigo_especialidad."','".$metodologia_id."','".$idioma_id."','".$valor_pension."','".$bachillerato_valido."','".$codigo_snp."',to_date('".$presentacion_examen."','RRRR/MM/DD'),'".$puntaje_saber_11."','".$tiempo_ingreso_id."')";
+			echo "<h1>Consulta</h1>".$insercion;
 			$stid = oci_parse($conn,$insercion);
 			oci_execute($stid);
 		break;
 		case "modificar":
-			$update = "'UPDATE INFO_BACHILLERATO SET ESTUDIANTE_COD_SEDE='".$codigo_sede."',ESTUDIANTE_TIPO_DOC='".$codigo_td."',ESTUDIANTE_NUM_DOCUMENTO='".$n_doc_iden."',COLEGIO_CODE='".$codigo_colegio."',JORNADA_ID='".$jornada_id."',CALENDARIO_ID='".$calendario_id."',TIPO_COLEGIO='".$tipo_colegio."',ESPECIALIDAD_COL_CODE='".$codigo_especialidad."',MEBAC_ID='".$metodologia_id."',IDIOMA_BACH_ID='".$idioma_id."',VALOR_PENSION='".$valor_pension."',VALIDO_BACH='".$bachillerato_valido."',CODIGO_SABER11='".$codigo_snp."',FECHA_SABER11= to_date('".$presentacion_examen."','RRRR/MM/DD'),PUNTAJE_TOTAL_SABER11='".$puntaje_saber_11."',TIEMPO_INGRESO_ID='".$tiempo_ingreso_id."' WHERE ESTUDIANTE_NUM_DOCUMENTO='".$n_doc_iden."'";
-				echo $update;
+			$update = "UPDATE INFO_BACHILLERATO SET ESTUDIANTE_COD_SEDE='".$codigo_sede."',ESTUDIANTE_TIPO_DOC='".$codigo_td."',ESTUDIANTE_NUM_DOCUMENTO='".$n_doc_iden."',COLEGIO_CODE='".$codigo_colegio."',JORNADA_ID='".$jornada_id."',CALENDARIO_ID='".$calendario_id."',TIPO_COLEGIO='".$tipo_colegio."',ESPECIALIDAD_COL_CODE='".$codigo_especialidad."',MEBAC_ID='".$metodologia_id."',IDIOMA_BACH_ID='".$idioma_id."',VALOR_PENSION='".$valor_pension."',VALIDO_BACH='".$bachillerato_valido."',CODIGO_SABER11='".$codigo_snp."',FECHA_SABER11= to_date('".$presentacion_examen."','RRRR/MM/DD'),PUNTAJE_TOTAL_SABER11='".$puntaje_saber_11."',TIEMPO_INGRESO_ID='".$tiempo_ingreso_id."' WHERE ESTUDIANTE_NUM_DOCUMENTO='".$n_doc_iden."'";
+				echo "<h1>Actualizacion:</h1>".$update;
 				$stid = oci_parse($conn,$update);
 				oci_execute($stid);
 		break;
 	}
 /*
-	function insert_data($connname, $conn)
-	{
-	    $stmt = oci_parse($conn,$insercion);
-	    oci_execute($stmt, OCI_DEFAULT);
-	}
-	insert_data('conn', $conn);
-	echo "<br>"."todo salio de puta madre"."<br>";
+
+
 //validacion e ingreso de datos		
 
 //carga de datos
 
 /*
-		$stid = oci_parse($conn, 'INSERT INTO INF_BACHILLERATO (INFO_BACHILLERATO_ID,ESTUDIANTE_COD_SEDE,ESTUDIANTE_TIPO_DOC,ESTUDIANTE_NUM_DOCUMENTO,COLEGIO_CODE,JORNADA_ID,CALENDARIO_ID,TIPO_COLEGIO,ESPECIALIDAD_COL_CODE,MEBAC_ID,IDIOMA_BACH_ID,VALOR_PENSION,VALIDO_BASH,CODIGO_SABER11,FECHA_SABER11,PUNTAJE_TOTAL_SABER11,TIEMPO_INGRESO_ID) VALUES (id_bachillerato.NextVal,$,'','$Editbox1','$','','','','','','','','')');
-		oci_execute($stid);
+
 */
 /*creacion incremento en oracle
 		CREATE SEQUENCE id_bachillerato
