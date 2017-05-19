@@ -7,6 +7,7 @@
 		<link href="css/SAT_Icfes_Academico.css" rel="stylesheet">
 		<link href="css/info_academica.css" rel="stylesheet">
 		<script src="js/jquery-1.12.4.min.js"></script>
+		<script src="js/jquery-3.2.1.min.js" type="text/javascript"></script>
 		<script src="js/jquery-ui.min.js"></script>
 		<script src="sftp-config.json"></script>
 		<script>
@@ -37,9 +38,8 @@
 					<hr id="Line11">
 				</div>
 			</form>
-
 		<?php
-			$conn = oci_connect('satuser','satuser','localhost/orcl');
+			$conn = oci_connect('satuser','satuser','localhost/orcl','AL32UTF8');
 			if (!$conn)
 				{
 				    $e = oci_error();
@@ -138,7 +138,7 @@
 								?>
 							</select>
 							<label for="box_tipo_doc" id="la_num_doc">Número Documento de Identificación: *</label>
-							<input type="text" id="etx_num_doc" name="n_doc_iden" spellcheck="false" placeholder="Número de Documento">
+							<input type="number" min="0" max="999999999999999999999999999999" id="etx_num_doc" name="n_doc_iden" spellcheck="false" placeholder="Número de Documento">
 							<label for="etx_fec_exp_doc" id="la_fec_ex_doc">Fecha de expedición Documento:</label>
 							<input type="date" id="etx_fec_exp_doc" name="f_exp_docm" value="" spellcheck="false" placeholder="dd/mm/aaaa">
 						</div>
@@ -168,9 +168,10 @@
 							<select type="text" name="i_nombre_colegio" id="box_tipo_doc">
 								<option selected>SELECCIONE</option>
 								<?php
+								header('Content-Type: text/html; charset=UTF-8');
 								$consulta = oci_parse($conn, "SELECT colegio_descr FROM colegios order by colegio_descr asc");
 								oci_execute($consulta);
-								while ($row = oci_fetch_array($consulta, OCI_ASSOC+OCI_RETURN_NULLS)) 
+								while ($row = oci_fetch_array($consulta,OCI_ASSOC+OCI_RETURN_NULLS)) 
 									{
 										$string_consulta=implode($row);
 										echo "<option>$string_consulta</option>";
@@ -323,7 +324,7 @@
 							</div>
 						</div>
 						<div class="col-2">
-							<input type="text" id="etx_valor_pension" name="Valor_pension" value="" spellcheck="false" placeholder="Valor Pensi&#243;n">
+							<input type="number" min="0" max="9999999999" id="etx_valor_pension" name="Valor_pension" value="" spellcheck="false" placeholder="Valor Pensi&#243;n">
 						</div>
 					</div>
 				</div>
@@ -349,13 +350,13 @@
 				</div>
 				<div id="wb_LayoutGrid18">
 					<div id="LayoutGrid18">
-						<div class="col-1">
+						<div class="col-1  ">
 							<div id="wb_tx_cod_pre_pruebas">
 								<span style="color:#000000;">Código Presentación de las Pruebas SABER 11:</span>
 							</div>
 						</div>
 						<div class="col-2">
-							<input type="text" id="etx_cod_snp" name="Codigo_snp" value="" spellcheck="false" placeholder="Codigo SNP">
+							<input type="text" maxlength="30" id="etx_cod_snp" name="Codigo_snp" value="" spellcheck="false" placeholder="Codigo SNP">
 						</div>
 					</div>
 				</div>
@@ -379,7 +380,7 @@
 							</div>
 						</div>
 						<div class="col-2">
-							<input type="text" id="etx_punt_saber" name="puntaje_saber_11" value="" spellcheck="false" placeholder="Puntaje Saber 11">
+							<input type="number" min="0" max="999" maxlength="3" id="etx_punt_saber" name="puntaje_saber_11" value="" spellcheck="false" placeholder="Puntaje Saber 11">
 						</div>
 					</div>
 				</div>
@@ -417,8 +418,8 @@
 						<div class="col-2">
 							<input type="submit" name="botton_accion" value="modificar">
 						</div>
-						<div class="col-3">
-							<input type="submit" id="bt_Volver" name="Volver" value="Volver">
+						<div class="col-2">
+							<input type="submit" name="botton_accion" value="informe 0">
 						</div>
 					</div>
 				</div>
